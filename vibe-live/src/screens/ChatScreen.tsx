@@ -30,9 +30,13 @@ export default function ChatScreen({ route, navigation }: Props) {
           <Text style={{fontSize:18}}>←</Text>
         </TouchableOpacity>
         <View style={styles.headerMeta}>
-          <View style={styles.avatar}><Text style={styles.avatarText}>{'AS'}</Text></View>
+          {avatarUrl ? (
+            <Image source={{ uri: avatarUrl }} style={styles.avatarImage} />
+          ) : (
+            <View style={styles.avatar}><Text style={styles.avatarText}>{'AS'}</Text></View>
+          )}
           <View>
-            <Text style={styles.headerTitle}>Ana Silva</Text>
+            <Text style={styles.headerTitle}>{chatName}</Text>
             <Text style={styles.headerStatus}>Estudando para as provas! • Online</Text>
           </View>
         </View>
