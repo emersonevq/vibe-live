@@ -117,7 +117,7 @@ export default function ProfileScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8fafc' },
-  header: { height: 160, backgroundColor: '#2563EB', position: 'relative', marginBottom: 50 },
+  header: { height: 160, backgroundColor: '#16a34a', position: 'relative', marginBottom: 50 },
   coverImage: { width: '100%', height: 160, resizeMode: 'cover', opacity: 0.2 },
   avatarContainer: { position: 'absolute', bottom: -40, left: '50%', marginLeft: -50 },
   avatar: { width: 100, height: 100, borderRadius: 50, borderWidth: 4, borderColor: '#fff' },
