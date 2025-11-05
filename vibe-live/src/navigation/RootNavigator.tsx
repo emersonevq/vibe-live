@@ -23,29 +23,55 @@ function MainTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { height: 64, paddingBottom: 12, backgroundColor: '#fff' },
-        tabBarLabelStyle: { fontSize: 12 },
+        tabBarStyle: {
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+          backgroundColor: '#fff',
+          borderTopWidth: 1,
+          borderTopColor: '#e5e7eb',
+          elevation: 8,
+          shadowColor: '#000',
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+          shadowOffset: { width: 0, height: -2 },
+        },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
+        tabBarActiveTintColor: '#2563EB',
+        tabBarInactiveTintColor: '#9ca3af',
       }}
     >
       <Tab.Screen
         name="Scraps"
         component={require('../screens/ScrapsScreen').default}
-        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>📝</Text> }}
+        options={{
+          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '📝' : '🗃️'}</Text>,
+          tabBarLabel: 'Scraps'
+        }}
       />
       <Tab.Screen
         name="Story"
         component={require('../screens/StoryScreen').default}
-        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>📸</Text> }}
+        options={{
+          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '📸' : '🖼️'}</Text>,
+          tabBarLabel: 'Stories'
+        }}
       />
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>💬</Text> }}
+        options={{
+          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '💬' : '📬'}</Text>,
+          tabBarLabel: 'Mensagens'
+        }}
       />
       <Tab.Screen
         name="Profile"
         component={require('../screens/ProfileScreen').default}
-        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>👤</Text> }}
+        options={{
+          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '👤' : '👥'}</Text>,
+          tabBarLabel: 'Perfil'
+        }}
       />
     </Tab.Navigator>
   );
