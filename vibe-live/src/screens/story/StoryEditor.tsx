@@ -316,6 +316,30 @@ export default function StoryEditor({
           }}
         />
       )}
+
+      {/* Filters Modal */}
+      <Filters
+        visible={filtersVisible}
+        imageUri={imageUri}
+        currentFilter={currentFilter}
+        onConfirm={(filter, config) => {
+          setCurrentFilter(filter);
+          setFiltersVisible(false);
+        }}
+        onCancel={() => setFiltersVisible(false)}
+      />
+
+      {/* Crop Modal */}
+      <Crop
+        visible={cropVisible}
+        imageUri={imageUri}
+        initialCrop={crop || undefined}
+        onConfirm={(cropData) => {
+          setCrop(cropData);
+          setCropVisible(false);
+        }}
+        onCancel={() => setCropVisible(false)}
+      />
     </View>
   );
 }
