@@ -58,11 +58,19 @@ export default function HomeScreen() {
           </View>
         </View>
         <View style={styles.appBarRight}>
-          <TouchableOpacity style={styles.headerIconBtn}>
-            <MaterialCommunityIcons name="cog" size={22} color="#fff" />
+          <TouchableOpacity style={styles.headerIconBtn} onPress={() => navigation.navigate('Feed' as any)}>
+            <MaterialCommunityIcons name="plus" size={22} color="#fff" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.headerIconBtn}>
-            <MaterialCommunityIcons name="folder" size={22} color="#fff" />
+          <TouchableOpacity style={styles.headerIconBtn} onPress={() => navigation.navigate('Story' as any)}>
+            <MaterialCommunityIcons name="bell" size={22} color="#fff" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.headerIconBtn} onPress={() => {/* search action */}}>
+            <MaterialCommunityIcons name="magnify" size={22} color="#fff" />
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.headerIconBtn, styles.avatarBtn]} onPress={() => navigation.navigate('Perfil' as any)}>
+            <View style={styles.topAvatar}>
+              <Text style={styles.topAvatarText}>U</Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -139,6 +147,9 @@ const styles = StyleSheet.create({
   appTitle: { color: '#fff', fontWeight: '700', fontSize: 16 },
   appBarRight: { flexDirection: 'row', alignItems: 'center' },
   headerIconBtn: { marginLeft: 12 },
+  avatarBtn: { marginLeft: 8 },
+  topAvatar: { width: 34, height: 34, borderRadius: 17, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
+  topAvatarText: { color: '#16a34a', fontWeight: '700' },
   profileRow: { flexDirection: 'row', alignItems: 'center', padding: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#e5e7eb' },
   profileAvatar: { width: 44, height: 44, borderRadius: 22, marginRight: 12 },
   profileName: { fontWeight: '700', fontSize: 14 },
