@@ -47,40 +47,40 @@ function MainTabs() {
       }}
     >
       <Tab.Screen
-        name="Scraps"
+        name="Feed"
         component={require('../screens/ScrapsScreen').default}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? 'file-document' : 'file-document-outline'}
+              name={focused ? 'home' : 'home-outline'}
               size={size}
               color={color}
             />
           ),
-          tabBarLabel: 'Scraps'
+          tabBarLabel: 'Feed'
         }}
       />
       <Tab.Screen
-        name="Story"
-        component={require('../screens/StoryScreen').default}
+        name="Criar"
+        component={require('../screens/CreateScreen').default}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? 'image' : 'image-outline'}
+              name={focused ? 'plus-circle' : 'plus-circle-outline'}
               size={size}
               color={color}
             />
           ),
-          tabBarLabel: 'Stories'
+          tabBarLabel: 'Criar'
         }}
       />
       <Tab.Screen
-        name="Home"
+        name="Mensagens"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? 'chat' : 'chat-outline'}
+              name={focused ? 'message-text' : 'message-text-outline'}
               size={size}
               color={color}
             />
@@ -89,7 +89,21 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="Notificações"
+        component={require('../screens/NotificationsScreen').default}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <MaterialCommunityIcons
+              name={focused ? 'bell' : 'bell-outline'}
+              size={size}
+              color={color}
+            />
+          ),
+          tabBarLabel: 'Notificações'
+        }}
+      />
+      <Tab.Screen
+        name="Perfil"
         component={require('../screens/ProfileScreen').default}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
