@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
-import MaterialIcon from '../components/MaterialIcon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAuth } from '../navigation/auth';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -37,7 +37,7 @@ export default function SignUpScreen() {
     >
       <View style={styles.headerSection}>
         <View style={styles.iconCircle}>
-          <MaterialIcon name="account-plus" size={48} color="#fff" />
+          <MaterialCommunityIcons name="account-plus" size={48} color="#fff" />
         </View>
         <Text style={styles.title}>Criar Conta</Text>
         <Text style={styles.subtitle}>Junte-se ao Live Messenger</Text>
@@ -46,7 +46,7 @@ export default function SignUpScreen() {
       <View style={styles.card}>
         <View style={styles.inputGroup}>
           <View style={styles.inputWrapper}>
-            <MaterialIcon name="email" size={20} color="#16a34a" style={styles.inputIcon} />
+            <MaterialCommunityIcons name="email" size={20} color="#16a34a" style={styles.inputIcon} />
             <TextInput
               value={email}
               onChangeText={setEmail}
@@ -61,7 +61,7 @@ export default function SignUpScreen() {
 
         <View style={styles.inputGroup}>
           <View style={styles.inputWrapper}>
-            <MaterialIcon name="lock" size={20} color="#16a34a" style={styles.inputIcon} />
+            <MaterialCommunityIcons name="lock" size={20} color="#16a34a" style={styles.inputIcon} />
             <TextInput
               value={password}
               onChangeText={setPassword}
@@ -71,9 +71,9 @@ export default function SignUpScreen() {
               placeholderTextColor="#9ca3af"
             />
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-              <MaterialIcon 
-                name={showPassword ? 'eye' : 'eye-off'} 
-                size={20} 
+              <MaterialCommunityIcons
+                name={showPassword ? 'eye' : 'eye-off'}
+                size={20}
                 color="#9ca3af"
               />
             </TouchableOpacity>
@@ -82,7 +82,7 @@ export default function SignUpScreen() {
 
         <View style={styles.inputGroup}>
           <View style={styles.inputWrapper}>
-            <MaterialIcon name="lock-check" size={20} color="#16a34a" style={styles.inputIcon} />
+            <MaterialCommunityIcons name="lock-check" size={20} color="#16a34a" style={styles.inputIcon} />
             <TextInput
               value={confirmPassword}
               onChangeText={setConfirmPassword}
@@ -92,9 +92,9 @@ export default function SignUpScreen() {
               placeholderTextColor="#9ca3af"
             />
             <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-              <MaterialIcon 
-                name={showConfirmPassword ? 'eye' : 'eye-off'} 
-                size={20} 
+              <MaterialCommunityIcons
+                name={showConfirmPassword ? 'eye' : 'eye-off'}
+                size={20}
                 color="#9ca3af"
               />
             </TouchableOpacity>

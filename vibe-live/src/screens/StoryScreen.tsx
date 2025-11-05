@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Modal, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import MaterialIcon from '../components/MaterialIcon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const STORIES = [
   { id: '1', name: 'Ana Silva', avatarUrl: 'https://randomuser.me/api/portraits/women/65.jpg', hasStory: true, time: 'há 2 horas' },
@@ -44,7 +44,7 @@ export default function StoryScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <MaterialIcon name="image" size={24} color="#16a34a" />
+        <MaterialCommunityIcons name="image" size={24} color="#16a34a" />
         <Text style={styles.title}>Stories</Text>
       </View>
 
@@ -56,7 +56,7 @@ export default function StoryScreen() {
       >
         <TouchableOpacity style={styles.addStoryCard} onPress={handleAddStory}>
           <View style={styles.addStoryCircle}>
-            <MaterialIcon name="plus" size={32} color="#16a34a" />
+            <MaterialCommunityIcons name="plus" size={32} color="#16a34a" />
           </View>
           <Text style={styles.storyName}>Seu Story</Text>
           <Text style={styles.storyTimeSmall}>Agora</Text>
@@ -81,7 +81,7 @@ export default function StoryScreen() {
       <View style={styles.content}>
         {!selectedStory ? (
           <View style={styles.emptyState}>
-            <MaterialIcon name="image-plus" size={64} color="#d1d5db" />
+            <MaterialCommunityIcons name="image-plus" size={64} color="#d1d5db" />
             <Text style={styles.emptyTitle}>Veja os stories dos seus amigos</Text>
             <Text style={styles.emptySubtitle}>Toque em um story para assistir</Text>
           </View>
@@ -121,7 +121,7 @@ export default function StoryScreen() {
                   </View>
                 </View>
                 <TouchableOpacity onPress={() => setSelectedStory(null)}>
-                  <MaterialIcon name="close" size={26} color="#fff" />
+                  <MaterialCommunityIcons name="close" size={26} color="#fff" />
                 </TouchableOpacity>
               </View>
 
@@ -132,23 +132,23 @@ export default function StoryScreen() {
 
               <View style={styles.storyViewerFooter}>
                 <TouchableOpacity style={styles.storyActionButton} onPress={handlePrevStory}>
-                  <MaterialIcon name="chevron-left" size={32} color="#fff" />
+                  <MaterialCommunityIcons name="chevron-left" size={32} color="#fff" />
                 </TouchableOpacity>
 
                 <View style={styles.storyActions}>
                   <TouchableOpacity style={[styles.storyFooterButton, { marginHorizontal: 4 }]}>
-                    <MaterialIcon name="heart-outline" size={24} color="#fff" />
+                    <MaterialCommunityIcons name="heart-outline" size={24} color="#fff" />
                   </TouchableOpacity>
                   <TouchableOpacity style={[styles.storyFooterButton, { marginHorizontal: 4 }]}>
-                    <MaterialIcon name="send" size={24} color="#fff" />
+                    <MaterialCommunityIcons name="send" size={24} color="#fff" />
                   </TouchableOpacity>
                   <TouchableOpacity style={[styles.storyFooterButton, { marginHorizontal: 4 }]}>
-                    <MaterialIcon name="share-variant" size={24} color="#fff" />
+                    <MaterialCommunityIcons name="share-variant" size={24} color="#fff" />
                   </TouchableOpacity>
                 </View>
 
                 <TouchableOpacity style={styles.storyActionButton} onPress={handleNextStory}>
-                  <MaterialIcon name="chevron-right" size={32} color="#fff" />
+                  <MaterialCommunityIcons name="chevron-right" size={32} color="#fff" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -158,14 +158,14 @@ export default function StoryScreen() {
 
       <View style={styles.statsSection}>
         <View style={styles.statCard}>
-          <MaterialIcon name="image-multiple" size={28} color="#16a34a" />
+          <MaterialCommunityIcons name="image-multiple" size={28} color="#16a34a" />
           <View style={styles.statInfo}>
             <Text style={styles.statCount}>{Array.isArray(STORIES) ? STORIES.filter(s => s.hasStory).length : 0}</Text>
             <Text style={styles.statLabel}>Stories Ativos</Text>
           </View>
         </View>
         <View style={styles.statCard}>
-          <MaterialIcon name="eye" size={28} color="#16a34a" />
+          <MaterialCommunityIcons name="eye" size={28} color="#16a34a" />
           <View style={styles.statInfo}>
             <Text style={styles.statCount}>143</Text>
             <Text style={styles.statLabel}>Visualizações</Text>
