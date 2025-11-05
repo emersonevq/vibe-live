@@ -8,6 +8,7 @@ import ChatScreen from '../screens/ChatScreen';
 import { useAuth } from './auth';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import CustomTabBar from './CustomTabBar';
 
 export type RootStackParamList = {
   Auth: undefined;
@@ -21,29 +22,9 @@ const Tab = createBottomTabNavigator();
 function MainTabs() {
   return (
     <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          height: 64,
-          paddingBottom: 12,
-          paddingTop: 8,
-          backgroundColor: '#fff',
-          borderTopWidth: 1,
-          borderTopColor: '#e5e7eb',
-          elevation: 12,
-          shadowColor: '#000',
-          shadowOpacity: 0.12,
-          shadowRadius: 6,
-          shadowOffset: { width: 0, height: -3 },
-          borderRadius: 24,
-          marginBottom: 8,
-          marginLeft: 8,
-          marginRight: 8,
-        },
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '600', marginTop: 4 },
-        tabBarActiveTintColor: '#16a34a',
-        tabBarInactiveTintColor: '#9ca3af',
-        tabBarIconStyle: { marginTop: 2 },
       }}
     >
       <Tab.Screen
@@ -51,13 +32,9 @@ function MainTabs() {
         component={require('../screens/ScrapsScreen').default}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? 'home' : 'home-outline'}
-              size={size}
-              color={color}
-            />
+            <MaterialCommunityIcons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
           ),
-          tabBarLabel: 'Feed'
+          tabBarLabel: 'Feed',
         }}
       />
 
@@ -66,13 +43,9 @@ function MainTabs() {
         component={require('../screens/StoryScreen').default}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? 'image' : 'image-outline'}
-              size={size}
-              color={color}
-            />
+            <MaterialCommunityIcons name={focused ? 'image' : 'image-outline'} size={size} color={color} />
           ),
-          tabBarLabel: 'Stories'
+          tabBarLabel: 'Stories',
         }}
       />
 
@@ -81,13 +54,9 @@ function MainTabs() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? 'message-text' : 'message-text-outline'}
-              size={size}
-              color={color}
-            />
+            <MaterialCommunityIcons name={focused ? 'message-text' : 'message-text-outline'} size={size} color={color} />
           ),
-          tabBarLabel: 'Mensagens'
+          tabBarLabel: 'Mensagens',
         }}
       />
 
@@ -96,13 +65,9 @@ function MainTabs() {
         component={require('../screens/ProfileScreen').default}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? 'account' : 'account-outline'}
-              size={size}
-              color={color}
-            />
+            <MaterialCommunityIcons name={focused ? 'account' : 'account-outline'} size={size} color={color} />
           ),
-          tabBarLabel: 'Perfil'
+          tabBarLabel: 'Perfil',
         }}
       />
     </Tab.Navigator>
