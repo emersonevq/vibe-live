@@ -36,9 +36,23 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Vibe</Text>
-        <Text style={styles.headerSub}>Disponível para conversar!</Text>
+      <View style={styles.appBar}>
+        <View style={styles.appBarLeft}>
+          <Text style={styles.appTitle}>Live Messenger</Text>
+          <Text style={styles.appSubtitle}>Disponível para conversar!</Text>
+        </View>
+        <View style={styles.appBarRight}>
+          <Text style={styles.appIcon}>⚙️</Text>
+        </View>
+      </View>
+
+      <View style={styles.profileRow}>
+        <Image source={{ uri: 'https://randomuser.me/api/portraits/men/75.jpg' }} style={styles.profileAvatar} />
+        <View style={{ flex: 1 }}>
+          <Text style={styles.profileName}>Usuário Visitante</Text>
+          <Text style={styles.profileStatus}>Disponível para conversar!</Text>
+        </View>
+        <Text style={styles.profileOnline}>Online</Text>
       </View>
 
       <TextInput placeholder="Pesquisar contatos..." style={styles.search} />
@@ -74,20 +88,28 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 12 },
-  header: { paddingVertical: 10, borderBottomWidth: 0, marginBottom: 8 },
-  headerTitle: { fontSize: 20, fontWeight: '700' },
-  headerSub: { fontSize: 12, color: '#6b7280' },
-  search: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, padding: 10, marginVertical: 10 },
+  container: { flex: 1, backgroundColor: '#fff', padding: 8 },
+  appBar: { height: 62, backgroundColor: '#2563EB', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, borderRadius: 8, marginBottom: 12 },
+  appBarLeft: { flex: 1 },
+  appTitle: { color: '#fff', fontWeight: '700', fontSize: 16 },
+  appSubtitle: { color: '#fff', fontSize: 12, opacity: 0.9 },
+  appBarRight: { paddingLeft: 8 },
+  appIcon: { color: '#fff', fontSize: 18 },
+  profileRow: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#fff', borderRadius: 8, marginBottom: 10 },
+  profileAvatar: { width: 48, height: 48, borderRadius: 24, marginRight: 10 },
+  profileName: { fontWeight: '700' },
+  profileStatus: { color: '#6b7280', fontSize: 12 },
+  profileOnline: { color: '#16a34a', fontWeight: '600' },
+  search: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, padding: 10, marginBottom: 10, backgroundColor: '#fff' },
   sectionHeader: { paddingVertical: 8 },
   sectionTitle: { fontWeight: '700', color: '#374151' },
-  item: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#f3f4f6' },
+  item: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderColor: '#f3f4f6' },
   avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#e6e9ef', alignItems: 'center', justifyContent: 'center', marginRight: 10 },
   avatarText: { fontWeight: '700', color: '#111827' },
-  avatarImage: { width: 44, height: 44, borderRadius: 22, marginRight: 10 },
   meta: { flex: 1 },
   name: { fontWeight: '600' },
   last: { color: '#6b7280', marginTop: 2 },
-  badge: { backgroundColor: '#f97316', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 12 },
+  badge: { backgroundColor: '#f97316', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 12, marginLeft: 8 },
   badgeText: { color: '#fff', fontWeight: '700' },
+  avatarImage: { width: 44, height: 44, borderRadius: 22, marginRight: 10 },
 });
