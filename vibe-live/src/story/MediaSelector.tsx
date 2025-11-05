@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import type { Background } from './types';
 
 interface Props {
@@ -25,10 +26,21 @@ export default function MediaSelector({ onSelect, onCancel }: Props) {
         <TouchableOpacity
           accessibilityLabel="Abrir galeria"
           style={styles.actionBtn}
-          onPress={() => {
-            // Em Expo, use expo-image-picker; solicitaremos depois.
-            // Por enquanto, foque em "Criar com texto" para início rápido mobile-first.
-            alert('Galeria requer permissões. Posso adicionar expo-image-picker se desejar.');
+          onPress={async () => {
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+            if (status !== 'granted') {
+              Alert.alert('Permissão necessária', 'Autorize o acesso à galeria para continuar.');
+              return;
+            }
+            const result = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.All, allowsMultipleSelection: false, quality: 0.9 });
+            if (result.canceled) return;
+            const asset = result.assets?.[0];
+            if (!asset) return;
+            if (asset.type === 'video') {
+              onSelect({ type: 'video', uri: asset.uri, duration: (asset as any).duration });
+            } else {
+              onSelect({ type: 'image', uri: asset.uri });
+            }
           }}
         >
           <MaterialCommunityIcons name="image-multiple" size={28} color="#fff" />
@@ -38,8 +50,21 @@ export default function MediaSelector({ onSelect, onCancel }: Props) {
         <TouchableOpacity
           accessibilityLabel="Abrir câmera"
           style={styles.actionBtn}
-          onPress={() => {
-            alert('Câmera requer permissões. Posso adicionar expo-camera se desejar.');
+          onPress={async () => {
+            const { status } = await ImagePicker.requestCameraPermissionsAsync();
+            if (status !== 'granted') {
+              Alert.alert('Permissão necessária', 'Autorize o acesso à câmera para continuar.');
+              return;
+            }
+            const result = await ImagePicker.launchCameraAsync({ mediaTypes: ImagePicker.MediaTypeOptions.All, quality: 0.9 });
+            if (result.canceled) return;
+            const asset = result.assets?.[0];
+            if (!asset) return;
+            if (asset.type === 'video') {
+              onSelect({ type: 'video', uri: asset.uri, duration: (asset as any).duration });
+            } else {
+              onSelect({ type: 'image', uri: asset.uri });
+            }
           }}
         >
           <MaterialCommunityIcons name="camera" size={28} color="#fff" />
