@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootNavigator';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import MaterialIcon from '../components/MaterialIcon';
 
 type NavProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -49,7 +50,7 @@ export default function HomeScreen() {
         <View style={styles.appBarLeft}>
           <View style={styles.logoContainer}>
             <View style={styles.logoCircle}>
-              <Text style={styles.logoIcon}>💬</Text>
+              <MaterialIcon name="chat-bubble" size={18} color="#fff" />
             </View>
             <View>
               <Text style={styles.appTitle}>Live Messenger</Text>
@@ -58,10 +59,10 @@ export default function HomeScreen() {
         </View>
         <View style={styles.appBarRight}>
           <TouchableOpacity style={styles.headerIconBtn}>
-            <Text style={styles.headerIcon}>⚙️</Text>
+            <MaterialIcon name="cog" size={22} color="#fff" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.headerIconBtn}>
-            <Text style={styles.headerIcon}>📂</Text>
+            <MaterialIcon name="folder" size={22} color="#fff" />
           </TouchableOpacity>
         </View>
       </View>
@@ -76,24 +77,28 @@ export default function HomeScreen() {
           <Text style={styles.profileOnline}>Online</Text>
         </View>
         <TouchableOpacity>
-          <Text style={styles.chevron}>▼</Text>
+          <MaterialIcon name="chevron-down" size={20} color="#6b7280" />
         </TouchableOpacity>
       </View>
 
       <View style={styles.searchContainer}>
-        <Text style={styles.searchIcon}>🔍</Text>
-        <TextInput placeholder="Pesquisar contatos..." style={styles.search} />
+        <MaterialIcon name="magnify" size={18} color="#6b7280" />
+        <TextInput placeholder="Pesquisar contatos..." style={styles.search} placeholderTextColor="#9ca3af" />
       </View>
 
       <SectionList
-        sections={GROUPS}
+        sections={Array.isArray(GROUPS) ? GROUPS : []}
         keyExtractor={(item) => item.id}
         renderSectionHeader={({ section: { title } }) => (
           <TouchableOpacity
             style={styles.sectionHeader}
             onPress={() => toggleSection(title)}
           >
-            <Text style={styles.sectionChevron}>{expandedSections.includes(title) ? '▼' : '▶'}</Text>
+            <MaterialIcon 
+              name={expandedSections.includes(title) ? 'chevron-down' : 'chevron-right'} 
+              size={18} 
+              color="#6b7280"
+            />
             <Text style={styles.sectionTitle}>{title}</Text>
           </TouchableOpacity>
         )}
@@ -127,28 +132,23 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
-  appBar: { height: 56, backgroundColor: '#2563EB', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12 },
+  appBar: { height: 56, backgroundColor: '#16a34a', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12 },
   appBarLeft: { flex: 1 },
   logoContainer: { flexDirection: 'row', alignItems: 'center' },
   logoCircle: { width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.25)', alignItems: 'center', justifyContent: 'center', marginRight: 8 },
-  logoIcon: { fontSize: 18 },
   appTitle: { color: '#fff', fontWeight: '700', fontSize: 16 },
   appBarRight: { flexDirection: 'row', alignItems: 'center' },
   headerIconBtn: { marginLeft: 12 },
-  headerIcon: { fontSize: 20 },
   profileRow: { flexDirection: 'row', alignItems: 'center', padding: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#e5e7eb' },
   profileAvatar: { width: 44, height: 44, borderRadius: 22, marginRight: 12 },
   profileName: { fontWeight: '700', fontSize: 14 },
   profileStatus: { color: '#6b7280', fontSize: 12, marginTop: 2 },
   onlineBadge: { backgroundColor: '#dcfce7', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 12, marginRight: 8 },
   profileOnline: { color: '#16a34a', fontWeight: '600', fontSize: 12 },
-  chevron: { fontSize: 12, color: '#9ca3af', marginLeft: 4 },
   searchContainer: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 8, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#e5e7eb' },
-  searchIcon: { fontSize: 16, marginRight: 8 },
-  search: { flex: 1, fontSize: 14, color: '#111827' },
+  search: { flex: 1, fontSize: 14, color: '#111827', marginLeft: 8 },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 12, backgroundColor: '#f9fafb' },
-  sectionChevron: { fontSize: 10, color: '#6b7280', marginRight: 8, width: 12 },
-  sectionTitle: { fontWeight: '700', color: '#374151', fontSize: 13 },
+  sectionTitle: { fontWeight: '700', color: '#374151', fontSize: 13, marginLeft: 4 },
   item: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12, paddingHorizontal: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f3f4f6' },
   avatarContainer: { position: 'relative', marginRight: 12 },
   avatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#e6e9ef', alignItems: 'center', justifyContent: 'center' },
