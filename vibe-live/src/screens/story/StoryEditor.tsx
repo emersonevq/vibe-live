@@ -16,6 +16,8 @@ import PrivacySelector from './PrivacySelector';
 import TextEditor from './TextEditor';
 import Filters from './Filters';
 import Crop from './Crop';
+import StickersGIFs from './StickersGIFs';
+import InteractiveElements from './InteractiveElements';
 
 interface StoryEditorProps {
   imageUri: string;
