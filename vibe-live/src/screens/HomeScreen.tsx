@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootNavigator';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import MaterialIcon from '../components/MaterialIcon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type NavProp = NativeStackNavigationProp<RootStackParamList>;
 
