@@ -132,7 +132,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
-  appBar: { height: 56, backgroundColor: '#2563EB', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12 },
+  appBar: { height: 56, backgroundColor: '#16a34a', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12 },
   appBarLeft: { flex: 1 },
   logoContainer: { flexDirection: 'row', alignItems: 'center' },
   logoCircle: { width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.25)', alignItems: 'center', justifyContent: 'center', marginRight: 8 },
