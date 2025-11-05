@@ -31,7 +31,7 @@ export default function LoginScreen() {
     >
       <View style={styles.headerSection}>
         <View style={styles.iconCircle}>
-          <MaterialIcon name="chat" size={48} color="#fff" />
+          <MaterialCommunityIcons name="chat" size={48} color="#fff" />
         </View>
         <Text style={styles.title}>Vibe</Text>
         <Text style={styles.subtitle}>Live Messenger</Text>
@@ -42,7 +42,7 @@ export default function LoginScreen() {
 
         <View style={styles.inputGroup}>
           <View style={styles.inputWrapper}>
-            <MaterialIcon name="email" size={20} color="#16a34a" style={styles.inputIcon} />
+            <MaterialCommunityIcons name="email" size={20} color="#16a34a" style={styles.inputIcon} />
             <TextInput
               value={email}
               onChangeText={setEmail}
@@ -57,7 +57,7 @@ export default function LoginScreen() {
 
         <View style={styles.inputGroup}>
           <View style={styles.inputWrapper}>
-            <MaterialIcon name="lock" size={20} color="#16a34a" style={styles.inputIcon} />
+            <MaterialCommunityIcons name="lock" size={20} color="#16a34a" style={styles.inputIcon} />
             <TextInput
               value={password}
               onChangeText={setPassword}
@@ -67,9 +67,9 @@ export default function LoginScreen() {
               placeholderTextColor="#9ca3af"
             />
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-              <MaterialIcon 
-                name={showPassword ? 'eye' : 'eye-off'} 
-                size={20} 
+              <MaterialCommunityIcons
+                name={showPassword ? 'eye' : 'eye-off'}
+                size={20}
                 color="#9ca3af"
               />
             </TouchableOpacity>
