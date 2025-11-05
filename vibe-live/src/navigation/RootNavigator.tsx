@@ -7,7 +7,6 @@ import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
 import { useAuth } from './auth';
 import { NavigationContainer } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CustomTabBar from './CustomTabBar';
 
 export type RootStackParamList = {
@@ -27,49 +26,13 @@ function MainTabs() {
         headerShown: false,
       }}
     >
-      <Tab.Screen
-        name="Feed"
-        component={require('../screens/ScrapsScreen').default}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
-          ),
-          tabBarLabel: 'Feed',
-        }}
-      />
+      <Tab.Screen name="Feed" component={require('../screens/ScrapsScreen').default} />
 
-      <Tab.Screen
-        name="Story"
-        component={require('../screens/StoryScreen').default}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons name={focused ? 'image' : 'image-outline'} size={size} color={color} />
-          ),
-          tabBarLabel: 'Stories',
-        }}
-      />
+      <Tab.Screen name="Story" component={require('../screens/StoryScreen').default} />
 
-      <Tab.Screen
-        name="Mensagens"
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons name={focused ? 'message-text' : 'message-text-outline'} size={size} color={color} />
-          ),
-          tabBarLabel: 'Mensagens',
-        }}
-      />
+      <Tab.Screen name="Mensagens" component={HomeScreen} />
 
-      <Tab.Screen
-        name="Perfil"
-        component={require('../screens/ProfileScreen').default}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons name={focused ? 'account' : 'account-outline'} size={size} color={color} />
-          ),
-          tabBarLabel: 'Perfil',
-        }}
-      />
+      <Tab.Screen name="Perfil" component={require('../screens/ProfileScreen').default} />
     </Tab.Navigator>
   );
 }
