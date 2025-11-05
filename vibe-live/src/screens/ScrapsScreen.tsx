@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 20, fontWeight: '700', color: '#111827', marginLeft: 10 },
   composerCard: { backgroundColor: '#fff', margin: 12, padding: 16, borderRadius: 12, elevation: 2, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
   composerLabel: { fontSize: 13, fontWeight: '600', color: '#6b7280', marginBottom: 12 },
-  composer: { flexDirection: 'row', alignItems: 'flex-end', gap: 8 },
+  composer: { flexDirection: 'row', alignItems: 'flex-end' },
   input: { flex: 1, backgroundColor: '#f9fafb', borderRadius: 12, paddingHorizontal: 14, paddingVertical: 10, fontSize: 14, color: '#111827', borderWidth: 1, borderColor: '#e5e7eb', maxHeight: 80 },
   button: { backgroundColor: '#16a34a', width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 40 },
