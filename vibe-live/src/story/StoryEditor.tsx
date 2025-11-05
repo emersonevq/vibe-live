@@ -303,6 +303,15 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
                 <Text style={[styles.pillText, brushWidth === w && styles.pillTextActive]}>{w}</Text>
               </TouchableOpacity>
             ))}
+            <TouchableOpacity accessibilityLabel="Desfazer" onPress={() => { setUndone((u)=>[...(strokes.slice(-1)), ...u]); setStrokes((s)=>s.slice(0, -1)); }} style={[styles.pill]}>
+              <MaterialCommunityIcons name="undo" color="#e5e7eb" size={18} />
+            </TouchableOpacity>
+            <TouchableOpacity accessibilityLabel="Refazer" onPress={() => { const next = undone[0]; if (next) { setStrokes((s)=>[...s, next]); setUndone((u)=>u.slice(1)); } }} style={[styles.pill]}>
+              <MaterialCommunityIcons name="redo" color="#e5e7eb" size={18} />
+            </TouchableOpacity>
+            <TouchableOpacity accessibilityLabel="Limpar tudo" onPress={() => { setStrokes([]); setUndone([]); }} style={[styles.pill, { backgroundColor: '#ef4444' }]}>
+              <MaterialCommunityIcons name="broom" color="#fff" size={18} />
+            </TouchableOpacity>
           </View>
         </View>
       )}
