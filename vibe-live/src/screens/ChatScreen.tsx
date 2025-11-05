@@ -92,7 +92,7 @@ export default function ChatScreen({ route, navigation }: Props) {
               maxHeight={100}
             />
             <TouchableOpacity style={styles.emojiBtn}>
-              <MaterialIcon name="emoticon-happy-outline" size={22} color="#f97316" />
+              <MaterialIcon name="emoticon-happy-outline" size={22} color="#16a34a" />
             </TouchableOpacity>
             <TouchableOpacity onPress={send} style={styles.sendBtn}>
               <MaterialIcon name="send" size={20} color="#fff" />
