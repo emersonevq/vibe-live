@@ -45,7 +45,7 @@ export default function ScrapsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <MaterialIcon name="file-document" size={24} color="#16a34a" />
+        <MaterialCommunityIcons name="file-document" size={24} color="#16a34a" />
         <Text style={styles.title}>Scraps Rápidos</Text>
       </View>
 
@@ -62,14 +62,14 @@ export default function ScrapsScreen() {
             maxHeight={80}
           />
           <TouchableOpacity style={[styles.button, { marginLeft: 8 }]} onPress={add}>
-            <MaterialIcon name="send" size={20} color="#fff" />
+            <MaterialCommunityIcons name="send" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
       </View>
 
       {visible.length === 0 ? (
         <View style={styles.empty}>
-          <MaterialIcon name="inbox-multiple" size={64} color="#d1d5db" />
+          <MaterialCommunityIcons name="inbox-multiple" size={64} color="#d1d5db" />
           <Text style={styles.emptyText}>Nenhum scrap ativo</Text>
           <Text style={styles.emptySubtext}>Scraps desaparecem após 1 hora</Text>
         </View>
@@ -87,7 +87,7 @@ export default function ScrapsScreen() {
                 <View style={styles.cardMeta}>
                   <Text style={styles.cardAuthor}>{item.author}</Text>
                   <View style={styles.timeRow}>
-                    <MaterialIcon name="clock-outline" size={12} color="#9ca3af" />
+                    <MaterialCommunityIcons name="clock-outline" size={12} color="#9ca3af" />
                     <Text style={styles.cardTime}> {new Date(item.createdAt).toLocaleTimeString()}</Text>
                   </View>
                 </View>
