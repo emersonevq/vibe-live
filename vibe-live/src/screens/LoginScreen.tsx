@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
+import MaterialIcon from '../components/MaterialIcon';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootNavigator';
@@ -13,11 +14,11 @@ export default function LoginScreen() {
   const { signIn } = useAuth();
   const [email, setEmail] = useState(__DEV__ ? 'teste@mail.com' : '');
   const [password, setPassword] = useState(__DEV__ ? '123' : '');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
     try {
       await signIn(email.trim(), password);
-      // navigation to Main is handled by auth state change
     } catch (err: any) {
       Alert.alert('Erro', err.message || 'Não foi possível entrar');
     }
@@ -28,28 +29,65 @@ export default function LoginScreen() {
       behavior={Platform.select({ ios: 'padding', android: undefined })}
       style={styles.container}
     >
-      <View style={styles.card}>
+      <View style={styles.headerSection}>
+        <View style={styles.iconCircle}>
+          <MaterialIcon name="chat-bubble" size={48} color="#fff" />
+        </View>
         <Text style={styles.title}>Vibe</Text>
-        <Text style={styles.subtitle}>Entre com seu e-mail e senha</Text>
+        <Text style={styles.subtitle}>Live Messenger</Text>
+      </View>
 
-        <TextInput
-          value={email}
-          onChangeText={setEmail}
-          placeholder="E-mail"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          style={styles.input}
-        />
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Entre com seu e-mail e senha</Text>
 
-        <TextInput
-          value={password}
-          onChangeText={setPassword}
-          placeholder="Senha"
-          secureTextEntry
-          style={styles.input}
-        />
+        <View style={styles.inputGroup}>
+          <View style={styles.inputWrapper}>
+            <MaterialIcon name="email" size={20} color="#2563EB" style={styles.inputIcon} />
+            <TextInput
+              value={email}
+              onChangeText={setEmail}
+              placeholder="E-mail"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              style={styles.input}
+              placeholderTextColor="#9ca3af"
+            />
+          </View>
+        </View>
+
+        <View style={styles.inputGroup}>
+          <View style={styles.inputWrapper}>
+            <MaterialIcon name="lock" size={20} color="#2563EB" style={styles.inputIcon} />
+            <TextInput
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Senha"
+              secureTextEntry={!showPassword}
+              style={styles.input}
+              placeholderTextColor="#9ca3af"
+            />
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+              <MaterialIcon 
+                name={showPassword ? 'eye' : 'eye-off'} 
+                size={20} 
+                color="#9ca3af"
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
 
         <PrimaryButton title="Entrar" onPress={handleLogin} />
+
+        <View style={styles.divider}>
+          <View style={styles.dividerLine} />
+          <Text style={styles.dividerText}>ou</Text>
+          <View style={styles.dividerLine} />
+        </View>
+
+        <TouchableOpacity style={styles.socialButton}>
+          <MaterialIcon name="google" size={20} color="#EA4335" />
+          <Text style={styles.socialButtonText}>Entrar com Google</Text>
+        </TouchableOpacity>
 
         <View style={styles.row}>
           <Text style={styles.text}>Não tem conta?</Text>
@@ -63,12 +101,23 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', justifyContent: 'center', padding: 20 },
-  card: { backgroundColor: '#fff' },
-  title: { fontSize: 36, fontWeight: '700', color: '#000', textAlign: 'center', marginBottom: 6 },
-  subtitle: { fontSize: 14, color: '#444', textAlign: 'center', marginBottom: 20 },
-  input: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, padding: 12, marginBottom: 12, backgroundColor: '#fff' },
+  container: { flex: 1, backgroundColor: '#f8fafc', justifyContent: 'center', padding: 20 },
+  headerSection: { alignItems: 'center', marginBottom: 32 },
+  iconCircle: { width: 80, height: 80, borderRadius: 40, backgroundColor: '#2563EB', alignItems: 'center', justifyContent: 'center', marginBottom: 16 },
+  title: { fontSize: 36, fontWeight: '700', color: '#000', textAlign: 'center' },
+  subtitle: { fontSize: 14, color: '#6b7280', textAlign: 'center', marginTop: 4 },
+  card: { backgroundColor: '#fff', borderRadius: 16, padding: 24, elevation: 2, shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+  cardTitle: { fontSize: 16, fontWeight: '600', color: '#374151', textAlign: 'center', marginBottom: 20 },
+  inputGroup: { marginBottom: 16 },
+  inputWrapper: { flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, paddingHorizontal: 12, backgroundColor: '#f9fafb' },
+  inputIcon: { marginRight: 8 },
+  input: { flex: 1, paddingVertical: 12, fontSize: 14, color: '#111827' },
+  divider: { flexDirection: 'row', alignItems: 'center', marginVertical: 24 },
+  dividerLine: { flex: 1, height: 1, backgroundColor: '#e5e7eb' },
+  dividerText: { paddingHorizontal: 12, color: '#9ca3af', fontSize: 12 },
+  socialButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, paddingVertical: 12, marginBottom: 16 },
+  socialButtonText: { marginLeft: 8, fontSize: 14, fontWeight: '600', color: '#111827' },
   row: { flexDirection: 'row', justifyContent: 'center', marginTop: 12 },
-  text: { color: '#444' },
-  link: { color: '#16a34a', fontWeight: '600' },
+  text: { color: '#6b7280', fontSize: 13 },
+  link: { color: '#2563EB', fontWeight: '600' },
 });
