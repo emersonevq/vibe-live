@@ -57,8 +57,8 @@ export default function ChatScreen({ route, navigation }: Props) {
         renderItem={({ item }) => (
           <View style={[styles.bubbleWrap, item.fromMe ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' }]}>
             <View style={[styles.bubble, item.fromMe ? styles.bubbleRight : styles.bubbleLeft]}>
-              <Text style={styles.bubbleText}>{item.text}</Text>
-              <Text style={styles.time}>{item.time}</Text>
+              <Text style={[styles.bubbleText, item.fromMe ? styles.bubbleTextRight : styles.bubbleTextLeft]}>{item.text}</Text>
+              <Text style={[styles.time, item.fromMe ? styles.timeRight : styles.timeLeft]}>{item.time}</Text>
             </View>
           </View>
         )}
