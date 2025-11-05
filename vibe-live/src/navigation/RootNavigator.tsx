@@ -12,7 +12,7 @@ import { Text } from 'react-native';
 export type RootStackParamList = {
   Auth: undefined;
   Main: undefined;
-  Chat: { chatId: string } | undefined;
+  Chat: { chatId: string; name?: string; avatarUrl?: string } | undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
