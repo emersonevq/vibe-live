@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
   item: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#f3f4f6' },
   avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#e6e9ef', alignItems: 'center', justifyContent: 'center', marginRight: 10 },
   avatarText: { fontWeight: '700', color: '#111827' },
+  avatarImage: { width: 44, height: 44, borderRadius: 22, marginRight: 10 },
   meta: { flex: 1 },
   name: { fontWeight: '600' },
   last: { color: '#6b7280', marginTop: 2 },
