@@ -75,7 +75,7 @@ export default function ScrapsScreen() {
         </View>
       ) : (
         <FlatList
-          data={visible}
+          data={Array.isArray(visible) ? visible : []}
           keyExtractor={(i) => i.id}
           contentContainerStyle={styles.listContent}
           renderItem={({ item }) => (
