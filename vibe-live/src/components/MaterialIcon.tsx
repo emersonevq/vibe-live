@@ -1,5 +1,5 @@
 import React from 'react';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextStyle } from 'react-native';
 
 interface MaterialIconProps {
