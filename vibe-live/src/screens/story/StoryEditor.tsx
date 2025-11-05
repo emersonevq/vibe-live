@@ -352,6 +352,46 @@ export default function StoryEditor({
         }}
         onCancel={() => setCropVisible(false)}
       />
+
+      {/* Stickers Modal */}
+      <StickersGIFs
+        visible={stickersVisible}
+        onSelect={(sticker) => {
+          setElements([...elements, sticker]);
+          setStickersVisible(false);
+        }}
+        onCancel={() => setStickersVisible(false)}
+      />
+
+      {/* Interactive Elements Modal */}
+      <InteractiveElements
+        visible={interactiveElementsVisible}
+        onSelectMention={(mention) => {
+          setElements([...elements, mention]);
+          setInteractiveElementsVisible(false);
+        }}
+        onSelectLocation={(location) => {
+          setElements([...elements, location]);
+          setInteractiveElementsVisible(false);
+        }}
+        onSelectPoll={(poll) => {
+          setElements([...elements, poll]);
+          setInteractiveElementsVisible(false);
+        }}
+        onSelectQuestion={(question) => {
+          setElements([...elements, question]);
+          setInteractiveElementsVisible(false);
+        }}
+        onSelectCountdown={(countdown) => {
+          setElements([...elements, countdown]);
+          setInteractiveElementsVisible(false);
+        }}
+        onSelectDateTime={(dateTime) => {
+          setElements([...elements, dateTime]);
+          setInteractiveElementsVisible(false);
+        }}
+        onCancel={() => setInteractiveElementsVisible(false)}
+      />
     </View>
   );
 }
