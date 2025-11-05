@@ -114,6 +114,7 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
         };
         setCurrentStroke(stroke);
         setStrokes((s) => [...s, stroke]);
+        setUndone([]);
       },
       onPanResponderMove: (e) => {
         if (!currentStroke) return;
