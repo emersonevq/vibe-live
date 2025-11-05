@@ -1,6 +1,8 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, PanResponder, GestureResponderEvent, PanResponderGestureState, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, PanResponder, GestureResponderEvent, PanResponderGestureState, Dimensions, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Video } from 'expo-av';
+import { captureRef } from 'react-native-view-shot';
 import type { Background, StoryComposition, TextItem, Stroke, Privacy } from './types';
 import PrivacySelector from './ui/PrivacySelector';
 import { v4 as uuidv4 } from 'uuid';
