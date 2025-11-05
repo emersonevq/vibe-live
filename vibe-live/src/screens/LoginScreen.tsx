@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { useAuth } from '../navigation/auth';
 
-type Props = {
-  onNavigate: (to: 'Login' | 'SignUp' | 'Home' | 'Chat', params?: { chatId?: string }) => void;
-};
+type AuthNavProp = NativeStackNavigationProp<RootStackParamList>;
 
-export default function LoginScreen({ onNavigate }: Props) {
+export default function LoginScreen() {
+  const navigation = useNavigation<AuthNavProp>();
+  const { signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Placeholder: validate/email+password would be sent to backend
-    onNavigate('Home');
+  const handleLogin = async () => {
+    try {
+      await signIn(email.trim(), password);
+      // navigation to Main is handled by auth state change
+    } catch (err: any) {
+      Alert.alert('Erro', err.message || 'Não foi possível entrar');
+    }
   };
 
   return (
@@ -45,7 +53,7 @@ export default function LoginScreen({ onNavigate }: Props) {
 
         <View style={styles.row}>
           <Text style={styles.text}>Não tem conta?</Text>
-          <TouchableOpacity onPress={() => onNavigate('SignUp')}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp' as any)}>
             <Text style={styles.link}> Cadastre-se</Text>
           </TouchableOpacity>
         </View>
