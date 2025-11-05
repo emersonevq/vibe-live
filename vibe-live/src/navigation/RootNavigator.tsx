@@ -20,11 +20,33 @@ const Tab = createBottomTabNavigator();
 
 function MainTabs() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Scraps" component={require('../screens/ScrapsScreen').default} />
-      <Tab.Screen name="Story" component={require('../screens/StoryScreen').default} />
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={require('../screens/ProfileScreen').default} />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { height: 64, paddingBottom: 12, backgroundColor: '#fff' },
+        tabBarLabelStyle: { fontSize: 12 },
+      }}
+    >
+      <Tab.Screen
+        name="Scraps"
+        component={require('../screens/ScrapsScreen').default}
+        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>📝</Text> }}
+      />
+      <Tab.Screen
+        name="Story"
+        component={require('../screens/StoryScreen').default}
+        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>📸</Text> }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>💬</Text> }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={require('../screens/ProfileScreen').default}
+        options={{ tabBarIcon: () => <Text style={{fontSize:18}}>👤</Text> }}
+      />
     </Tab.Navigator>
   );
 }
