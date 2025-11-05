@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   status: { fontSize: 14, color: '#6b7280', textAlign: 'center' },
   statsRow: { flexDirection: 'row', backgroundColor: '#fff', marginHorizontal: 12, marginBottom: 12, borderRadius: 12, overflow: 'hidden', elevation: 1, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 1 } },
   stat: { flex: 1, alignItems: 'center', paddingVertical: 16 },
-  statNumber: { fontSize: 18, fontWeight: '700', color: '#2563EB', marginBottom: 4 },
+  statNumber: { fontSize: 18, fontWeight: '700', color: '#16a34a', marginBottom: 4 },
   statLabel: { fontSize: 12, color: '#6b7280' },
   statDivider: { width: 1, backgroundColor: '#e5e7eb' },
   section: { backgroundColor: '#fff', marginHorizontal: 12, marginBottom: 12, padding: 16, borderRadius: 12, elevation: 1, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 1 } },
