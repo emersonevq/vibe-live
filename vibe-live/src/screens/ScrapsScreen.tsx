@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { v4 as uuidv4 } from 'uuid';
-import MaterialIcon from '../components/MaterialIcon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type Scrap = {
   id: string;
