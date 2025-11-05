@@ -131,7 +131,7 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
     })
   ).current;
 
-  const publish = () => {
+  const publish = async () => {
     const composition: StoryComposition = {
       background,
       texts,
@@ -139,7 +139,13 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
       privacy,
       allowShare,
       allowReplies,
-    };
+    } as StoryComposition & { exportUri?: string };
+    try {
+      if (captureViewRef.current) {
+        const uri = await captureRef(captureViewRef, { format: 'png', quality: 1 });
+        (composition as any).exportUri = uri;
+      }
+    } catch {}
     onPublish(composition);
   };
 
