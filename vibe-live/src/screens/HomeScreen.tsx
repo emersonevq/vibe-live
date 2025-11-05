@@ -1,15 +1,34 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, SectionList, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootNavigator';
 
 type NavProp = NativeStackNavigationProp<RootStackParamList>;
 
-const MOCK_CHATS = [
-  { id: '1', name: 'Amigos' },
-  { id: '2', name: 'Família' },
-  { id: '3', name: 'Trabalho' },
+const GROUPS = [
+  {
+    title: 'Amigos',
+    data: [
+      { id: '1', name: 'Ana Silva', last: 'Estudando para as provas!', online: true, unread: 2 },
+      { id: '2', name: 'Julia Oliveira', last: 'Feliz! 🎉', online: false, unread: 0 },
+    ],
+  },
+  {
+    title: 'Família',
+    data: [
+      { id: '3', name: 'Mariana Costa', last: 'Ouvindo música 🎵', online: true, unread: 1 },
+      { id: '4', name: 'Roberto Silva', last: 'Última vez online: ontem 22:30', online: false, unread: 0 },
+    ],
+  },
+  {
+    title: 'Trabalho',
+    data: [
+      { id: '5', name: 'Carlos Santos', last: 'Voltei em 10 min', online: false, unread: 0 },
+      { id: '6', name: 'Fernanda Costa', last: 'Almoçando...', online: false, unread: 0 },
+      { id: '7', name: 'Pedro Lima', last: 'Em reunião até 16h', online: false, unread: 0 },
+    ],
+  },
 ];
 
 export default function HomeScreen() {
@@ -17,13 +36,31 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Conversas</Text>
-      <FlatList
-        data={MOCK_CHATS}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Vibe</Text>
+        <Text style={styles.headerSub}>Disponível para conversar!</Text>
+      </View>
+
+      <TextInput placeholder="Pesquisar contatos..." style={styles.search} />
+
+      <SectionList
+        sections={GROUPS}
         keyExtractor={(item) => item.id}
+        renderSectionHeader={({ section: { title } }) => (
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>{title}</Text>
+          </View>
+        )}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Chat', { chatId: item.id })}>
-            <Text style={styles.itemText}>{item.name}</Text>
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText}>{item.name.split(' ').map((n: string) => n[0]).slice(0,2).join('')}</Text>
+            </View>
+            <View style={styles.meta}>
+              <Text style={styles.name}>{item.name}</Text>
+              <Text style={styles.last}>{item.last}</Text>
+            </View>
+            {item.unread ? <View style={styles.badge}><Text style={styles.badgeText}>{item.unread}</Text></View> : null}
           </TouchableOpacity>
         )}
       />
@@ -32,8 +69,19 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 16 },
-  title: { fontSize: 22, fontWeight: '700', marginBottom: 12 },
-  item: { padding: 14, borderRadius: 8, backgroundColor: '#f9fafb', marginBottom: 10 },
-  itemText: { fontSize: 16 },
+  container: { flex: 1, backgroundColor: '#fff', padding: 12 },
+  header: { paddingVertical: 10, borderBottomWidth: 0, marginBottom: 8 },
+  headerTitle: { fontSize: 20, fontWeight: '700' },
+  headerSub: { fontSize: 12, color: '#6b7280' },
+  search: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, padding: 10, marginVertical: 10 },
+  sectionHeader: { paddingVertical: 8 },
+  sectionTitle: { fontWeight: '700', color: '#374151' },
+  item: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#f3f4f6' },
+  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#e6e9ef', alignItems: 'center', justifyContent: 'center', marginRight: 10 },
+  avatarText: { fontWeight: '700', color: '#111827' },
+  meta: { flex: 1 },
+  name: { fontWeight: '600' },
+  last: { color: '#6b7280', marginTop: 2 },
+  badge: { backgroundColor: '#f97316', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 12 },
+  badgeText: { color: '#fff', fontWeight: '700' },
 });
