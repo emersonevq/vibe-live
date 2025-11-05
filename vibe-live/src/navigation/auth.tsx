@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import React, { createContext, useState, useContext } from 'react';
 
 type AuthContextType = {
   isSignedIn: boolean;
