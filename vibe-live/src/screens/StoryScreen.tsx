@@ -103,6 +103,7 @@ export default function StoryScreen() {
                         : idx === STORIES.findIndex(s => s.id === selectedStory)
                         ? styles.progressSegmentActive
                         : styles.progressSegmentEmpty,
+                      idx < STORIES.length - 1 && { marginRight: 4 },
                     ]}
                   />
                 ))}
