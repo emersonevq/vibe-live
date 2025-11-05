@@ -151,62 +151,70 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
 
   return (
     <View style={styles.container}>
-      {/* Background */}
-      {background.type === 'color' && (
-        <View style={[styles.bgFill, { backgroundColor: background.color }]} />
-      )}
-      {background.type === 'image' && (
-        // Implementation for image/video backgrounds can be added after media libs are installed
-        <View style={[styles.bgFill, { backgroundColor: '#000' }]} />
-      )}
+      <View style={styles.captureArea} ref={captureViewRef}>
+        {/* Background */}
+        {background.type === 'color' && (
+          <View style={[styles.bgFill, { backgroundColor: background.color }]} />
+        )}
+        {background.type === 'image' && (
+          <Image source={{ uri: background.uri }} style={[styles.bgFill as any]} resizeMode="cover" />
+        )}
+        {background.type === 'video' && (
+          <Video source={{ uri: background.uri }} style={[styles.bgFill as any]} resizeMode="cover" shouldPlay isMuted />
+        )}
 
-      {/* Draw layer */}
-      <View style={styles.drawLayer} {...drawResponder.panHandlers}>
-        {strokes.map((st) => (
-          <View key={st.id} style={StyleSheet.absoluteFill} pointerEvents="none">
-            {st.points.map((p, idx) => (
-              <View
-                key={idx}
-                style={{
-                  position: 'absolute',
-                  left: p.x * SCREEN_W - st.width / 2,
-                  top: p.y * SCREEN_H - st.width / 2,
-                  width: st.width,
-                  height: st.width,
-                  borderRadius: st.width / 2,
-                  backgroundColor: st.color,
-                  opacity: st.opacity,
-                }}
-              />
-            ))}
-          </View>
+        {/* Draw layer */}
+        <View style={styles.drawLayer} {...drawResponder.panHandlers}>
+          {strokes.map((st) => (
+            <View key={st.id} style={StyleSheet.absoluteFill} pointerEvents="none">
+              {st.points.map((p, idx) => (
+                <View
+                  key={idx}
+                  style={{
+                    position: 'absolute',
+                    left: p.x * SCREEN_W - st.width / 2,
+                    top: p.y * SCREEN_H - st.width / 2,
+                    width: st.width,
+                    height: st.width,
+                    borderRadius: st.width / 2,
+                    backgroundColor: st.color,
+                    opacity: st.opacity,
+                  }}
+                />
+              ))}
+            </View>
+          ))}
+        </View>
+
+        {/* Text items */}
+        {texts.map((it) => (
+          <TouchableOpacity
+            activeOpacity={0.9}
+            key={it.id}
+            onLongPress={() => setSelectedTextId(it.id)}
+            style={{ position: 'absolute', left: it.x * SCREEN_W, top: it.y * SCREEN_H }}
+            {...panHandlersById[it.id]?.panHandlers}
+          >
+            <Text
+              style={{
+                color: it.color,
+                fontSize: it.fontSize,
+                textAlign: it.align as any,
+                fontFamily: it.fontFamily,
+                transform: [{ rotate: `${it.rotation}deg` }, { scale: it.scale }],
+                backgroundColor: it.bgStyle === 'solid' ? 'rgba(0,0,0,0.7)' : it.bgStyle === 'semi' ? 'rgba(0,0,0,0.3)' : 'transparent',
+                paddingHorizontal: it.bgStyle === 'none' ? 0 : 6,
+                paddingVertical: it.bgStyle === 'none' ? 0 : 2,
+                includeFontPadding: false,
+                borderWidth: selectedTextId === it.id ? 1 : 0,
+                borderColor: 'rgba(255,255,255,0.8)'
+              }}
+            >
+              {it.text}
+            </Text>
+          </TouchableOpacity>
         ))}
       </View>
-
-      {/* Text items */}
-      {texts.map((it) => (
-        <View
-          key={it.id}
-          style={{ position: 'absolute', left: it.x * SCREEN_W, top: it.y * SCREEN_H }}
-          {...panHandlersById[it.id]?.panHandlers}
-        >
-          <Text
-            style={{
-              color: it.color,
-              fontSize: it.fontSize,
-              textAlign: it.align as any,
-              fontFamily: it.fontFamily,
-              transform: [{ rotate: `${it.rotation}deg` }, { scale: it.scale }],
-              backgroundColor: it.bgStyle === 'solid' ? 'rgba(0,0,0,0.7)' : it.bgStyle === 'semi' ? 'rgba(0,0,0,0.3)' : 'transparent',
-              paddingHorizontal: it.bgStyle === 'none' ? 0 : 6,
-              paddingVertical: it.bgStyle === 'none' ? 0 : 2,
-              includeFontPadding: false,
-            }}
-          >
-            {it.text}
-          </Text>
-        </View>
-      ))}
 
       {/* Top bar */}
       <View style={styles.topBar}>
