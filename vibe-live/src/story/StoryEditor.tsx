@@ -51,6 +51,10 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
   const [allowShare, setAllowShare] = useState(true);
   const [allowReplies, setAllowReplies] = useState(true);
 
+  const [selectedTextId, setSelectedTextId] = useState<string | null>(null);
+
+  const captureViewRef = useRef<View>(null);
+
   const addTextBox = () => {
     const newItem: TextItem = {
       id: uuidv4(),
