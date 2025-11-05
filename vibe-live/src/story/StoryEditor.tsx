@@ -33,6 +33,7 @@ export default function StoryEditor({ initialBackground, onClose, onPublish }: P
   const [activeTool, setActiveTool] = useState<Tool>('text');
   const [texts, setTexts] = useState<TextItem[]>([]);
   const [strokes, setStrokes] = useState<Stroke[]>([]);
+  const [undone, setUndone] = useState<Stroke[]>([]);
   const [currentStroke, setCurrentStroke] = useState<Stroke | null>(null);
 
   const [fontFamily, setFontFamily] = useState(FONT_OPTIONS[0]);
