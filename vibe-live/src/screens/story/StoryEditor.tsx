@@ -11,9 +11,11 @@ import {
   Alert,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { PrivacySettings, StoryElement, StoryDraft, TextElement } from './types';
+import { PrivacySettings, StoryElement, StoryDraft, TextElement, FilterType, FilterConfig, Crop as CropType } from './types';
 import PrivacySelector from './PrivacySelector';
 import TextEditor from './TextEditor';
+import Filters from './Filters';
+import Crop from './Crop';
 
 interface StoryEditorProps {
   imageUri: string;
