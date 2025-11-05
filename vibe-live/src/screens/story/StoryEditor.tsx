@@ -181,10 +181,18 @@ export default function StoryEditor({
 
         <TouchableOpacity
           style={styles.toolButton}
-          disabled
+          onPress={() => setStickersVisible(true)}
         >
-          <MaterialCommunityIcons name="sticker-emoji" size={24} color="#ccc" />
+          <MaterialCommunityIcons name="sticker-emoji" size={24} color="#16a34a" />
           <Text style={styles.toolButtonLabel}>Adesivos</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.toolButton}
+          onPress={() => setInteractiveElementsVisible(true)}
+        >
+          <MaterialCommunityIcons name="puzzle" size={24} color="#16a34a" />
+          <Text style={styles.toolButtonLabel}>Interativos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
