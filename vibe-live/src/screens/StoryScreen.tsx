@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   emptySubtitle: { fontSize: 14, color: '#6b7280', textAlign: 'center' },
 
   storyModal: { flex: 1, backgroundColor: '#000' },
-  storyProgressBar: { flexDirection: 'row', paddingHorizontal: 8, paddingVertical: 8, gap: 4 },
+  storyProgressBar: { flexDirection: 'row', paddingHorizontal: 8, paddingVertical: 8 },
   progressSegment: { flex: 1, height: 3, borderRadius: 1.5 },
   progressSegmentFilled: { backgroundColor: '#16a34a' },
   progressSegmentActive: { backgroundColor: '#22c55e' },
