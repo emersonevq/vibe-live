@@ -160,7 +160,7 @@ export default function StoryScreen() {
         <View style={styles.statCard}>
           <MaterialIcon name="image-multiple" size={28} color="#16a34a" />
           <View style={styles.statInfo}>
-            <Text style={styles.statCount}>{STORIES.filter(s => s.hasStory).length}</Text>
+            <Text style={styles.statCount}>{Array.isArray(STORIES) ? STORIES.filter(s => s.hasStory).length : 0}</Text>
             <Text style={styles.statLabel}>Stories Ativos</Text>
           </View>
         </View>
