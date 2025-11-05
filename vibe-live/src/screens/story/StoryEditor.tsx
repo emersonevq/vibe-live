@@ -104,36 +104,40 @@ export default function StoryEditor({
           <View style={styles.elementsOverlay}>
             {elements.map((element) => {
               if (element.type === 'text') {
+                const textEl = element as TextElement;
                 return (
-                  <View
+                  <TouchableOpacity
                     key={element.id}
                     style={[
                       styles.textElementPreview,
                       {
-                        transform: [{ rotate: `${element.rotation}deg` }],
-                        left: element.x,
-                        top: element.y,
+                        transform: [{ rotate: `${textEl.rotation}deg` }],
+                        left: textEl.x,
+                        top: textEl.y,
+                        backgroundColor: textEl.backgroundColor || 'transparent',
                       },
                     ]}
+                    onPress={() => handleEditText(textEl)}
+                    onLongPress={() => handleDeleteText(textEl.id)}
                   >
                     <Text
                       style={{
-                        fontSize: element.fontSize,
-                        color: element.color,
+                        fontSize: textEl.fontSize,
+                        color: textEl.color,
                         fontWeight:
-                          element.fontFamily === 'bold'
+                          textEl.fontFamily === 'bold'
                             ? '700'
-                            : element.fontFamily === 'italic'
+                            : textEl.fontFamily === 'italic'
                             ? '400'
                             : '400',
                         fontStyle:
-                          element.fontFamily === 'italic' ? 'italic' : 'normal',
-                        textAlign: element.align,
+                          textEl.fontFamily === 'italic' ? 'italic' : 'normal',
+                        textAlign: textEl.align,
                       }}
                     >
-                      {element.text}
+                      {textEl.text}
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 );
               }
               return null;
