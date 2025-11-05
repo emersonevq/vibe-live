@@ -59,10 +59,10 @@ export default function HomeScreen() {
         </View>
         <View style={styles.appBarRight}>
           <TouchableOpacity style={styles.headerIconBtn}>
-            <Text style={styles.headerIcon}>⚙️</Text>
+            <Ionicons name="settings-outline" size={22} color="#fff" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.headerIconBtn}>
-            <Text style={styles.headerIcon}>📂</Text>
+            <MaterialIcons name="folder-open" size={22} color="#fff" />
           </TouchableOpacity>
         </View>
       </View>
