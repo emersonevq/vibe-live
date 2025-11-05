@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Image } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-
+import MaterialIcon from '../components/MaterialIcon';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootNavigator';
 
@@ -30,7 +30,7 @@ export default function ChatScreen({ route, navigation }: Props) {
       <KeyboardAvoidingView style={[styles.container]} behavior={Platform.select({ ios: 'padding', android: undefined })}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-            <Text style={styles.backIcon}>←</Text>
+            <MaterialIcon name="arrow-left" size={24} color="#111827" />
           </TouchableOpacity>
 
           {avatarUrl ? (
@@ -48,13 +48,13 @@ export default function ChatScreen({ route, navigation }: Props) {
 
           <View style={styles.headerActions}>
             <TouchableOpacity style={styles.actionBtn}>
-              <Text style={styles.actionIcon}>📞</Text>
+              <MaterialIcon name="phone" size={22} color="#6b7280" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.actionBtn}>
-              <Text style={styles.actionIcon}>🎥</Text>
+              <MaterialIcon name="video" size={22} color="#6b7280" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.actionBtn}>
-              <Text style={styles.actionIcon}>×</Text>
+              <MaterialIcon name="information" size={22} color="#6b7280" />
             </TouchableOpacity>
           </View>
         </View>
@@ -70,17 +70,17 @@ export default function ChatScreen({ route, navigation }: Props) {
               </View>
             </View>
           )}
-          contentContainerStyle={{ padding: 16, paddingBottom: 90 }}
+          contentContainerStyle={{ padding: 12, paddingBottom: 90 }}
           style={styles.messagesList}
         />
 
         <View style={[styles.inputContainer, { paddingBottom: Math.max(insets.bottom, 8) }]}>
           <View style={styles.inputRow}>
             <TouchableOpacity style={styles.attachBtn}>
-              <Text style={styles.attachIcon}>📎</Text>
+              <MaterialIcon name="paperclip" size={22} color="#2563EB" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.attachBtn}>
-              <Text style={styles.attachIcon}>📷</Text>
+              <MaterialIcon name="image-plus" size={22} color="#2563EB" />
             </TouchableOpacity>
             <TextInput
               value={text}
@@ -88,12 +88,14 @@ export default function ChatScreen({ route, navigation }: Props) {
               style={styles.textInput}
               placeholder="Digite uma mensagem..."
               placeholderTextColor="#9ca3af"
+              multiline
+              maxHeight={100}
             />
             <TouchableOpacity style={styles.emojiBtn}>
-              <Text style={styles.emojiIcon}>😊</Text>
+              <MaterialIcon name="emoticon-happy-outline" size={22} color="#f97316" />
             </TouchableOpacity>
             <TouchableOpacity onPress={send} style={styles.sendBtn}>
-              <Text style={styles.sendIcon}>➤</Text>
+              <MaterialIcon name="send" size={20} color="#fff" />
             </TouchableOpacity>
           </View>
         </View>
@@ -105,8 +107,7 @@ export default function ChatScreen({ route, navigation }: Props) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f5f5f5' },
   header: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', paddingHorizontal: 12, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#e5e7eb' },
-  backBtn: { padding: 4, marginRight: 8 },
-  backIcon: { fontSize: 20, color: '#111827' },
+  backBtn: { padding: 8, marginRight: 8 },
   headerAvatar: { width: 36, height: 36, borderRadius: 18, marginRight: 10 },
   headerAvatarPlaceholder: { width: 36, height: 36, borderRadius: 18, backgroundColor: '#e6e9ef', alignItems: 'center', justifyContent: 'center', marginRight: 10 },
   headerAvatarText: { fontWeight: '700', fontSize: 12, color: '#111827' },
@@ -114,8 +115,7 @@ const styles = StyleSheet.create({
   headerTitle: { fontWeight: '700', fontSize: 15, color: '#111827' },
   headerSubtitle: { fontSize: 12, color: '#6b7280', marginTop: 1 },
   headerActions: { flexDirection: 'row', alignItems: 'center' },
-  actionBtn: { marginLeft: 8, padding: 4 },
-  actionIcon: { fontSize: 18, color: '#6b7280' },
+  actionBtn: { marginLeft: 12, padding: 4 },
 
   messagesList: { flex: 1 },
   messageRow: { marginVertical: 4, alignItems: 'flex-start' },
@@ -127,13 +127,10 @@ const styles = StyleSheet.create({
   messageTextMe: { color: '#fff' },
   messageTime: { fontSize: 11, color: '#9ca3af', marginTop: 4, textAlign: 'right' },
 
-  inputContainer: { backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#e5e7eb', paddingHorizontal: 12, paddingTop: 8 },
-  inputRow: { flexDirection: 'row', alignItems: 'center' },
+  inputContainer: { backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#e5e7eb', paddingHorizontal: 8, paddingTop: 8 },
+  inputRow: { flexDirection: 'row', alignItems: 'flex-end' },
   attachBtn: { padding: 8 },
-  attachIcon: { fontSize: 20 },
-  textInput: { flex: 1, backgroundColor: '#f3f4f6', borderRadius: 20, paddingHorizontal: 16, paddingVertical: 10, fontSize: 14, marginHorizontal: 8 },
-  emojiBtn: { padding: 4 },
-  emojiIcon: { fontSize: 20 },
-  sendBtn: { backgroundColor: '#2563EB', width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', marginLeft: 4 },
-  sendIcon: { color: '#fff', fontSize: 18, fontWeight: '700' },
+  textInput: { flex: 1, backgroundColor: '#f3f4f6', borderRadius: 20, paddingHorizontal: 16, paddingVertical: 10, fontSize: 14, marginHorizontal: 4, maxHeight: 100 },
+  emojiBtn: { padding: 8 },
+  sendBtn: { backgroundColor: '#2563EB', width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginLeft: 4, marginRight: 4 },
 });
