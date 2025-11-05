@@ -46,7 +46,9 @@ function MainTabs() {
         name="Scraps"
         component={require('../screens/ScrapsScreen').default}
         options={{
-          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '📝' : '🗃️'}</Text>,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name={focused ? 'newspaper' : 'newspaper-outline'} size={size ?? 22} color={color} />
+          ),
           tabBarLabel: 'Scraps'
         }}
       />
@@ -54,7 +56,9 @@ function MainTabs() {
         name="Story"
         component={require('../screens/StoryScreen').default}
         options={{
-          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '📸' : '🖼️'}</Text>,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name={focused ? 'camera' : 'camera-outline'} size={size ?? 22} color={color} />
+          ),
           tabBarLabel: 'Stories'
         }}
       />
@@ -62,7 +66,9 @@ function MainTabs() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '💬' : '📬'}</Text>,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name={focused ? 'chatbubbles' : 'chatbubbles-outline'} size={size ?? 22} color={color} />
+          ),
           tabBarLabel: 'Mensagens'
         }}
       />
@@ -70,7 +76,9 @@ function MainTabs() {
         name="Profile"
         component={require('../screens/ProfileScreen').default}
         options={{
-          tabBarIcon: ({ focused }) => <Text style={{fontSize: 22}}>{focused ? '👤' : '👥'}</Text>,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name={focused ? 'person-circle' : 'person-circle-outline'} size={size ?? 22} color={color} />
+          ),
           tabBarLabel: 'Perfil'
         }}
       />
