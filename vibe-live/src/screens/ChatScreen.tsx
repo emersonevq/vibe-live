@@ -25,25 +25,29 @@ export default function ChatScreen({ route, navigation }: Props) {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior={Platform.select({ ios: 'padding', android: undefined })}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.back}>
-          <Text style={{fontSize:18}}>←</Text>
-        </TouchableOpacity>
-        <View style={styles.headerMeta}>
-          {avatarUrl ? (
-            <Image source={{ uri: avatarUrl }} style={styles.avatarImage} />
-          ) : (
-            <View style={styles.avatar}><Text style={styles.avatarText}>{'AS'}</Text></View>
-          )}
-          <View>
-            <Text style={styles.headerTitle}>{chatName}</Text>
-            <Text style={styles.headerStatus}>Estudando para as provas! • Online</Text>
+      <View style={styles.headerWrap}>
+        <View style={styles.headerCard}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.back}>
+            <Text style={{fontSize:18}}>←</Text>
+          </TouchableOpacity>
+
+          <View style={styles.headerMeta}>
+            {avatarUrl ? (
+              <Image source={{ uri: avatarUrl }} style={styles.avatarImage} />
+            ) : (
+              <View style={styles.avatar}><Text style={styles.avatarText}>{'AS'}</Text></View>
+            )}
+            <View>
+              <Text style={styles.headerTitle}>{chatName}</Text>
+              <Text style={styles.headerStatus}>Estudando para as provas! • Online</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.headerActions}>
-          <Text style={styles.icon}>📞</Text>
-          <Text style={[styles.icon, {marginLeft:10}]}>🎥</Text>
-          <Text style={[styles.icon, {marginLeft:10}]}>⋮</Text>
+
+          <View style={styles.headerActions}>
+            <Text style={styles.icon}>📞</Text>
+            <Text style={[styles.icon, {marginLeft:10}]}>🎥</Text>
+            <Text style={[styles.icon, {marginLeft:10}]}>⋮</Text>
+          </View>
         </View>
       </View>
 
