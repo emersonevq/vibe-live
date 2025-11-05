@@ -52,10 +52,15 @@ export default function HomeScreen() {
           </View>
         )}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Chat', { chatId: item.id })}>
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>{item.name.split(' ').map((n: string) => n[0]).slice(0,2).join('')}</Text>
-            </View>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Chat', { chatId: item.id, name: item.name, avatarUrl: item.avatarUrl })}>
+            {item.avatarUrl ? (
+              <Image source={{ uri: item.avatarUrl }} style={styles.avatarImage} />
+            ) : (
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>{item.name.split(' ').map((n: string) => n[0]).slice(0,2).join('')}</Text>
+              </View>
+            )}
+
             <View style={styles.meta}>
               <Text style={styles.name}>{item.name}</Text>
               <Text style={styles.last}>{item.last}</Text>
