@@ -25,9 +25,9 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
   const getLabel = (routeName: string) => {
     switch (routeName) {
       case 'Feed':
-        return 'Feed';
+        return 'Início';
       case 'Story':
-        return 'Stories';
+        return 'Story';
       case 'Mensagens':
         return 'Mensagens';
       case 'Perfil':
