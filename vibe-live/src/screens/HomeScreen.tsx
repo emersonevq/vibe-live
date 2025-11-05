@@ -58,11 +58,8 @@ export default function HomeScreen() {
           </View>
         </View>
         <View style={styles.appBarRight}>
-          <TouchableOpacity style={styles.headerIconBtn}>
-            <MaterialCommunityIcons name="cog" size={22} color="#fff" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.headerIconBtn}>
-            <MaterialCommunityIcons name="folder" size={22} color="#fff" />
+          <TouchableOpacity style={styles.headerIconBtn} onPress={() => navigation.navigate('Notifications')}>
+            <MaterialCommunityIcons name="bell-outline" size={22} color="#fff" />
           </TouchableOpacity>
         </View>
       </View>
