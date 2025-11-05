@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
+
 type AuthContextType = {
   isSignedIn: boolean;
   signIn: (email: string, password: string) => Promise<void>;
