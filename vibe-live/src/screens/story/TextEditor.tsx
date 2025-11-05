@@ -6,9 +6,9 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  Slider,
   TextInput,
 } from 'react-native';
+import Slider from '@react-native-community/slider';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TextElement } from './types';
 

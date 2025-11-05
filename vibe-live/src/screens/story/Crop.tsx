@@ -7,8 +7,8 @@ import {
   StyleSheet,
   Image,
   ScrollView,
-  Slider,
 } from 'react-native';
+import Slider from '@react-native-community/slider';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Crop as CropType } from './types';
 
